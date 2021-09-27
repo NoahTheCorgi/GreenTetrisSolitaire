@@ -8,6 +8,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #UPGRADED AND CUSTOMIZED FROM THE TETRIS TEMPLATE FROM ARCADE ACADEMY
 """
+# Copyright (c) 2021 NoahTheCorgi @Github
 What was newly implemented from the default template:
 # color is now green only :D
 # scoring system
