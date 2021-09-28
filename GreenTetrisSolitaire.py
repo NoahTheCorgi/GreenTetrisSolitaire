@@ -623,8 +623,10 @@ class MyGame(arcade.Window):
 			self.drop()
 			self.v_assist = 1
 		elif key == arcade.key.ESCAPE:
-			self.close()
-
+			if self.three_UI_pages == 1 or self.three_UI_pages == 3:
+				self.close()
+			else: #if self.three_UI_pages ==2
+				self.three_UI_pages = 3
 	def on_key_release(self, key, modifiers):
 		if key == arcade.key.DOWN:
 			self.v_assist = 0
