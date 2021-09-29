@@ -356,42 +356,42 @@ class MyGame(arcade.Window):
 							"""
 							if i % 4 == 0: #case of "tetris"
 								self.SCORE += 200
-								arcade.play_sound(self.tetrisclearsound)
+								self.rotatesound.set_volume(0.5, arcade.play_sound(self.tetrisclearsound))
 
 							if self.current_and_next_stone_index[0] == 0:
 								self.SCORE += 23
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							elif self.current_and_next_stone_index[0] == 5:
 								self.SCORE += 33
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							elif self.current_and_next_stone_index[0] == 6:
 								self.SCORE += 43
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							elif self.current_and_next_stone_index[0] == 3:
 								self.SCORE += 63
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							elif self.current_and_next_stone_index[0] == 4:
 								self.SCORE += 73
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							elif self.current_and_next_stone_index[0] == 2:
 								self.SCORE += 93
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							elif self.current_and_next_stone_index[0] == 1:
 								self.SCORE += 103
 								if soundvariable == 0:
-									arcade.play_sound(self.rowclearsound)
+									self.rotatesound.set_volume(0.5, arcade.play_sound(self.rowclearsound))
 									soundvariable+=1
 							####################################################
 							####################################################
@@ -618,7 +618,8 @@ class MyGame(arcade.Window):
 			self.move(1)
 		elif key == arcade.key.SPACE:
 			self.rotate_stone()
-			arcade.play_sound(self.rotatesound)
+			#arcade.Sound.set_volume(0.5, arcade.play_sound(self.rotatesound))
+			self.rotatesound.set_volume(1, arcade.play_sound(self.rotatesound))
 		elif key == arcade.key.DOWN:
 			self.drop()
 			self.v_assist = 1
