@@ -37,6 +37,7 @@ UPGRADED AND CUSTOMIZED FROM THE TETRIS TEMPLATE FROM ARCADE ACADEMY
 # - Improve and innovate scoring system for more variation
 # - Pause functionality
 # - Sound effects
+# - Simple text animation
 # ... ...
 
 The tetris clone base code before these changes was written by Paul Vincent Craven
