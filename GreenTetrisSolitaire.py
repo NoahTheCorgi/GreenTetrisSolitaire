@@ -152,6 +152,8 @@ class MyGame(arcade.Window):
 
 		super().__init__(width, height, title, resizable=True)
 
+		self.count4animate = 0
+
 		##########################################################################
 		# [[time it took to get to level i, # of blocks it took to reach level i]]
 		self.data = [[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]]
@@ -520,6 +522,15 @@ class MyGame(arcade.Window):
 
 	def on_update(self, dt):
 		""" Update, drop stone if warrented """
+
+		###################################################################################
+		#this part of the code updates self.count4animate every update to use for animation
+		if self.count4animate < 100:
+			self.count4animate +=1;
+		else: # self.count4animate == 100
+			self.count4animate = 0
+		###################################################################################
+
 		if self.paused == False:
 			if self.game_over == True and self.three_UI_pages == 2:
 				self.three_UI_pages += 1
@@ -533,17 +544,14 @@ class MyGame(arcade.Window):
 
 				self.update_board()
 
-				###################################################
-				###################################################
-				###################################################
+				################################################################
+				########_drop speed control based on level and key press_#######
+				################################################################
 				if self.v <= 0:
-					if self.frame_count % (11-self.level) == 0:
+					if self.frame_count % (18-2*self.level) == 0:
 						self.drop()
-				elif self.v > 0:
-				##################################################
-				###################################################
-				###################################################
 
+				elif self.v > 0:
 					if self.v <= 10: #the upper bound is the down key pressed buffer
 						if self.frame_count % 10 == 0:
 							self.drop()
@@ -705,7 +713,10 @@ class MyGame(arcade.Window):
 
 			arcade.draw_text(" ", 30, self.height/1.25 - 22*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
 
-			arcade.draw_text("Press ENTER to continue ...", 90, self.height/1.25 - 32*s, arcade.color.BLACK, 20, font_name="Kenney Pixel Square")
+			if self.count4animate <50: #simple blinking animation of "Enter"
+				arcade.draw_text("Press ENTER to continue ..", 90, self.height/1.25 - 32*s, arcade.color.BLACK, 20, font_name="Kenney Pixel Square")
+			else:
+				arcade.draw_text("Press                to continue .", 90, self.height/1.25 - 32*s, arcade.color.BLACK, 20, font_name="Kenney Pixel Square")
 
 		elif self.three_UI_pages == 2:
 			#####################this is what needs to get updated##################
@@ -740,44 +751,52 @@ class MyGame(arcade.Window):
 			arcade.draw_text("All Blocks Turn Green!", 30, self.height/1.25 - 2*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
 			arcade.draw_text("The following is your Performance Summary :D", 30, self.height/1.25 - 4*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
 
-			arcade.draw_text(" ", 30, self.height/1.25 - 6*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+			if self.count4animate <50:
+				arcade.draw_text(" ", 30, self.height/1.25 - 6*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("Your Total Score Was: " + str(self.SCORE), 30, self.height/1.25 - 8*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 10*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 2: " + str(self.data[0][1]-1), 30, self.height/1.25 - 14*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 16*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 3: " + str(self.data[1][1]), 30, self.height/1.25 - 20*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 22*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 4: " + str(self.data[2][1]), 30, self.height/1.25 - 26*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 28*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 5: " + str(self.data[3][1]), 30, self.height/1.25 - 32*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 34*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 6: "+ str(self.data[4][1]), 30, self.height/1.25 - 38*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 40*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 7: "+ str(self.data[5][1]), 30, self.height/1.25 - 44*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 46*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level INFINITY!: "+ str(self.data[6][1]), 30, self.height/1.25 - 50*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 52*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("See you at Level INFINITY! :)", 180, self.height/1.25 - 58*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+			else:
+				arcade.draw_text(" ", 30, self.height/1.25 - 6*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("Your Total Score Was: " , 30, self.height/1.25 - 8*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 10*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 2: " , 30, self.height/1.25 - 14*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 16*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 3: " , 30, self.height/1.25 - 20*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 22*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 4: " , 30, self.height/1.25 - 26*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 28*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 5: " , 30, self.height/1.25 - 32*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 34*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 6: ", 30, self.height/1.25 - 38*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 40*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level 7: ", 30, self.height/1.25 - 44*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 46*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("       The number of blocks it took for you to reach level INFINITY!: ", 30, self.height/1.25 - 50*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text(" ", 30, self.height/1.25 - 52*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+				arcade.draw_text("See you at Level INFINITY  :)", 180, self.height/1.25 - 58*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
 
-			arcade.draw_text("Your Total Score Was: " + str(self.SCORE), 30, self.height/1.25 - 8*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
 
-			arcade.draw_text(" ", 30, self.height/1.25 - 10*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
+		if self.paused == True and self.three_UI_pages == 2:
+			if self.count4animate <50:
+				arcade.draw_text("Paused... Press P to continue ..", 30, self.height/1.25 - 260, arcade.color.WHITE, 23, font_name="Kenney Pixel Square", bold = False)
+			else:
+				arcade.draw_text("Paused... Press     to continue .", 30, self.height/1.25 - 260, arcade.color.WHITE, 23, font_name="Kenney Pixel Square", bold = False)
 
-			arcade.draw_text("       The number of blocks it took for you to reach level 2: " + str(self.data[0][1]-1), 30, self.height/1.25 - 14*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 16*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("       The number of blocks it took for you to reach level 3: " + str(self.data[1][1]), 30, self.height/1.25 - 20*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 22*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("       The number of blocks it took for you to reach level 4: " + str(self.data[2][1]), 30, self.height/1.25 - 26*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 28*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("       The number of blocks it took for you to reach level 5: " + str(self.data[3][1]), 30, self.height/1.25 - 32*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 34*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("       The number of blocks it took for you to reach level 6: "+ str(self.data[4][1]), 30, self.height/1.25 - 38*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 40*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("       The number of blocks it took for you to reach level 7: "+ str(self.data[5][1]), 30, self.height/1.25 - 44*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 46*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("       The number of blocks it took for you to reach level INFINITY!: "+ str(self.data[6][1]), 30, self.height/1.25 - 50*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text(" ", 30, self.height/1.25 - 52*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-			arcade.draw_text("See you at Level INFINITY! :)", 180, self.height/1.25 - 58*s, arcade.color.BLACK, s, font_name="Kenney Pixel Square")
-
-		if self.paused == True:
-			arcade.draw_text("Paused... Press P to continue ...", 30, self.height/1.25 - 260, arcade.color.WHITE, 23, font_name="Kenney Pixel Square", bold = False)
 
 
 def main():
