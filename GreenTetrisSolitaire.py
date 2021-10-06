@@ -803,6 +803,9 @@ def main():
 	""" Create the game window, setup, run """
 	my_game = MyGame(Width + 280, Height + 71, SCREEN_TITLE)
 	my_game.setup()
+	############################################################################
+	game.switch_to()
+	############################################################################
 	arcade.run()
 
 if __name__ == "__main__":
