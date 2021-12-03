@@ -85,6 +85,7 @@ class TetrisLevelAI():
 		evaluation = self.evaluateBoard()
 		chance_distribution = random.randint(1,100)
 		if self.level == 1:
+
 			if chance_distribution < 26: #26 percent
 				return evaluation[0]
 			elif chance_distribution <= 52: #26%
@@ -100,7 +101,9 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #5%
 				return evaluation[6]
 
+
 		elif self.level == 2:
+
 			if chance_distribution <= 20: #20%
 				return evaluation[0]
 			elif chance_distribution <= 40: #20%
@@ -116,7 +119,9 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #7%
 				return evaluation[6]
 
+
 		elif self.level == 3:
+
 			if chance_distribution <= 15: #15%
 				return evaluation[0]
 			elif chance_distribution <= 30: #15%
@@ -132,7 +137,9 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #11%
 				return evaluation[6]
 
+
 		elif self.level == 4:
+
 			if chance_distribution <= 15: #10%
 				return evaluation[0]
 			elif chance_distribution <= 30: #15%
@@ -148,7 +155,9 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #15%
 				return evaluation[6]
 
+
 		elif self.level == 5:
+
 			if chance_distribution <= 11: #11
 				return evaluation[0]
 			elif chance_distribution <= 22: #11
@@ -164,7 +173,9 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #15
 				return evaluation[6]
 
+
 		elif self.level == 6:
+
 			if chance_distribution <= 7: #7
 				return evaluation[0]
 			elif chance_distribution <= 15: #8
@@ -180,7 +191,9 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #20
 				return evaluation[6]
 
+
 		elif self.level == 7:
+
 			if chance_distribution <= 5: #5
 				return evaluation[0]
 			elif chance_distribution <= 10: #5
@@ -196,8 +209,10 @@ class TetrisLevelAI():
 			elif chance_distribution <= 100: #25
 				return evaluation[6]
 
+
 		elif self.level == 8: #label this the "Final Boss"
 		#this should be almost imposs so game ends with stats,,,
+
 			if chance_distribution <= 5: #5
 				return evaluation[0]
 			elif chance_distribution <= 10: #5
