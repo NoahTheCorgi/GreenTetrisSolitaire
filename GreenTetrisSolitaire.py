@@ -38,6 +38,7 @@ What was newly implemented from the default template:
 import TetrisLevelAI
 import random
 import PIL #Alternative is Pillow, which forked PIL
+#import random
 
 ################################################################################
 ##############INITIAL-SETTING-BEFORE-WINDOW RESIZE##############################
