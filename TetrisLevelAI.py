@@ -1,7 +1,7 @@
 import random
 
-#in order to use this Class, create an instance --> call fct chooseNextBlock --> use the return
-#--> it will return an index that corresponds to the block type in GreenTetrisSolitaire.py's "tetris_shapes"
+# In order to use this Class, create an instance --> call fct chooseNextBlock --> use the return value
+# --> it will return an index that corresponds to the block type in GreenTetrisSolitaire.py's "tetris_shapes"
 
 """ Block Index: Tetris Block General Difficulty Ranking:
 in other words, for now...
@@ -18,6 +18,7 @@ self.boardevaluation.append(1) #the S block #most difficult block
 #Possible Future Improvements #2: Update chooseNextBlock so that it is more "forgiving",,,
 
 class TetrisLevelAI():
+	
 	"""this Class looks at the current tetris board and generates the next blocks
 	accordingly to the level of the current player..."""
 
@@ -29,13 +30,9 @@ class TetrisLevelAI():
 		#self.nextblock = None  # seven possible block shapes
 
 	def evaluateBlock(self, block):
-		"""returns the scoring of the block based on the number of possibilities
-		the block has to land nicely out of all the options"""
-
-		"""the higher the value the more possibilities of good placements i.e. higher value --> "easier" block"""
-
-		"""Nothing is implement yet because the game is already quite hard..."""
-
+		""" Future task: """
+		""" returns the scoring of the block based on the number of possibilities the block has to land nicely out of all the options"""
+		""" the higher the value the more possibilities of good placements i.e. higher value --> "easier" block"""
 		return 100
 
 	def sort_on_eval(self, eval): #sorting 7 things.

@@ -1,15 +1,14 @@
 # GreenTetrisSolitaire
 
 Welcome to GreenTetrisSolitaire! XD
-All Blocks Turn Green! Try to beat your best scores!
-At the end, you will see your Performance Summary :D
+At the end, you will see your Performance Summary.
 
 - Left and Right Keys (Short Press): Horizontal Movement
 - Left and Right Keys (Long Press): Horizontal Accelration
 - Down Key (Short press): Jump Vertically
 - Down Key (Long press): Acceleration Vertically
 - P: To Pause and Unpause
-- See you at Level INFINITY! :)
+- See you at Level INFINITY!
 
 UPGRADED AND CUSTOMIZED FROM THE TETRIS TEMPLATE FROM ARCADE ACADEMY
 
